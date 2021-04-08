@@ -1,0 +1,9 @@
+answers:
+
+1. We estimate that searching for this information manually would have taken about an hour 
+
+2. This concept would be very useful for sport fanaticts who want to check information very frequentlyv could be extreamly useful on very large data bases. 
+
+3. If repeating this task frequantly we would want to keep the urls.txt file whice includes the list of all the urls of the players we have visited in preveius scans.
+this should allow us to match with the every new scan generated removing duplicate player urls using unique ;making sure every player is scaned once
+ In order to repeat every hour, we would need to generate a 1 hour counter and use the less function to re-read the website, while comparing the results with the previous scan
