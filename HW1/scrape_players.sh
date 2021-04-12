@@ -7,8 +7,8 @@ grep -o -E '(\/players\/)([0-9])+\/(([a-z]|[A-Z])+-)+([a-z]|[A-Z])+\/overview' p
 sed -i 's/\/players/https:\/\/www\.premierleague\.com\/players/' urls.txt
 
 
- > results.csv
-echo Total players: `wc -l urls.txt | sed s/urls.txt// ` > results.csv
+ > Results.csv
+echo Total players: `wc -l urls.txt | sed s/urls.txt// ` > Results.csv
 
 while read line 
 do
@@ -18,7 +18,7 @@ do
 
 	if   [[ "$midfielder_count" != 0 ]]  ; then
 
-	 	 echo "${line}," Midfielder", ${midfielder_count}" >> results.csv
+	 	 echo "${line}," Midfielder", ${midfielder_count}" >> Results.csv
 	fi
  
 done < urls.txt
