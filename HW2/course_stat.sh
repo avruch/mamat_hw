@@ -11,5 +11,5 @@ elif [[ !(-f $1".txt") ]];then
 		mkdir $1"_stat" 
  		awk '{if (NR!=1) {print $2}}' $1".txt"> ./$1"_stat"/grades.txt 
  		gcc -g -Wall calc_statistics.c -o prog.exe
- 		./prog.exe "./$1"_stat"/grades.txt" > ./$1"_stat"/course_statistics.txt 2> /dev/null
+ 		./prog.exe "./$1"_stat"/grades.txt" > ./$1"_stat"/course_statistics.txt 
  fi
