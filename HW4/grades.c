@@ -45,7 +45,9 @@ int course_clone(void *element, void **output) {
 		if(!(new_course->name)) {
 					return 1;
 				};
-	strcpy(new_course->name,clone->name);
+	if(!strcpy(new_course->name,(const char*)clone->name)){
+
+	}
 	new_course->grade = clone->grade;
 	*output= new_course;
 	return 0;
@@ -57,7 +59,7 @@ int course_clone(void *element, void **output) {
  */
 void course_destroy(void *element) {
 	if (!element) {
-		return NULL;
+		return;
 	}
 	struct course *clone = (struct course *)element;
 	free(clone->name);
@@ -94,7 +96,7 @@ int student_clone(void *element, void **output) {
  */
 void student_destroy(void *element) {
 	if (!element) {
-		return NULL;
+		return;
 	}
 	struct student *clone = (struct student *)element;
 	list_destroy(clone->courses_list);
