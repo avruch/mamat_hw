@@ -129,7 +129,7 @@ void grades_destroy(struct grades *grades){
  */
 static struct student* find_student(struct grades *grades,int student_id) {
 	struct student *new_student;
-	struct node *current=list_begin(grades->students_list);
+	struct iterator *current=list_begin(grades->students_list);
 	while(current){
 		new_student = (struct student *)list_get(current);
 			if (new_student->id==student_id) {
@@ -145,7 +145,7 @@ static struct student* find_student(struct grades *grades,int student_id) {
  */
 static struct course* find_course(struct list *courses_list,const char *course_name) {
 	struct course *new_course;
-	struct node *current=list_begin(courses_list);
+	struct iterator *current=list_begin(courses_list);
 	while(current){
 		new_course = (struct course*)list_get(current);
 		if(!(strcmp(new_course->name,course_name))){
@@ -238,7 +238,7 @@ static float avg_list(struct list *list)
 	}
 
 	float sum = 0;
-	struct node *current = list_begin(list);
+	struct iterator *current = list_begin(list);
 	struct course *course;
 	for (int i = 0; i < len; i++) {
 		course = (struct course *)list_get(current); 
@@ -293,8 +293,14 @@ int grades_print_student(struct grades *grades, int id){
 		if (!student){
 			return 1;
 		}	
-		printf("%s %d: ", (student->name),(student->id));
-		struct node *current=list_begin(student->courses_list);
+		
+		struct iterator *current=list_begin(student->courses_list);
+		if (current){
+			printf("%s %d: ", (student->name),(student->id));
+			}
+		else{
+			printf("%s %d:", (student->name),(student->id));
+			}
 		while(current){
 			struct course *new_course = (struct course*)list_get(current);
 			printf("%s %d", (new_course->name),(new_course->grade));
@@ -323,7 +329,7 @@ int grades_print_all(struct grades *grades){
 	if(!grades){
 		return 1;
 	}
-	struct node *current;
+	struct iterator *current;
 	struct student *student;
 	int val;
 	current = list_begin(grades->students_list);
