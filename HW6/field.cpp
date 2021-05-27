@@ -25,6 +25,7 @@
         if (size > PACKET_SIZE){
             //printf("return too many condition'\n");
             //packet.print();
+            delete[] sub_strings;
         	return false;//illegal because we have the wrong number of fields in single packet
         }
 

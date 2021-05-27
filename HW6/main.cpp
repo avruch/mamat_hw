@@ -43,5 +43,7 @@ int main(int argc, char **argv){
 		field->set_value(sub_strings[1].trim());
 		parse_input( *field);
 	}
+	delete field;
+	delete [] sub_strings;
 	return 0;
 }

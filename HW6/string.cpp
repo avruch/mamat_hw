@@ -56,7 +56,7 @@
 
     String::~String(){
         if(NULL!=data){
-            delete[]data;
+            delete[] data;
         }
     }
 
@@ -181,7 +181,6 @@
         (*output)[sub_string_index]=String(&orig_str[begin_index]);//put last string in array
         //printf("output[%d]=%s\n",sub_string_index,(*output)[sub_string_index].data);
        //  printf("split_end output, sub string index=%d\n",sub_string_index);
-        //delete[] orig_str;
         return;
     }
 
@@ -210,6 +209,7 @@
         } 
         else {
          res=atoi(data);
+         delete[] sub_strings;
          return res;
          }
     }
