@@ -228,9 +228,6 @@
 
 
     }
-    bool String::is_empty(){
-        return (!(this->length));
-    }
 
 
 
