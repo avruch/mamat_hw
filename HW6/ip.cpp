@@ -41,6 +41,7 @@
 
     bool Ip::match_value(String val) const{
     	unsigned int value=val.to_integer();
+        //printf("match value init high=%d,low=%d,value=%u\n",high,low,value);
     	if ((value<low)||(value>high)){
     		return false;
     	}

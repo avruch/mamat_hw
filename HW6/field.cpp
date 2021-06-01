@@ -17,7 +17,11 @@
     }
     
     bool Field::match(String packet){
-        //printf("Field match'\n");
+        //printf("Field match begin'\n");
+        if (packet.is_empty()){
+            //printf("return false empty string\n");
+            return false;  
+        }
     	String* sub_strings;
         size_t size=0;
         bool tmp;
@@ -34,10 +38,12 @@
         	String* sub_sub_strings;
         	size_t sub_size=0;
         	(sub_strings[i]).trim().split("=",&sub_sub_strings,&sub_size);
-        //printf("Field match sub sub'\n");
+            //printf(" pattern first sub_sub_strings[0] second\n");
+        //pattern.print();
+        //sub_sub_strings[0].print();
             if(pattern.trim().equals(sub_sub_strings[0].trim())){
         //printf("Field match if'\n");
-                    tmp= match_value(sub_sub_strings[1].trim());
+                    tmp= this->match_value(sub_sub_strings[1].trim());
         //printf("Field match tmp=%d'\n",tmp);
                     delete[] sub_sub_strings;
                     if(!tmp){
@@ -46,7 +52,7 @@
                         //packet.print();
                         return false;
                     }
-                    //printf("condition %d passed\n",i);
+                    //printf("condition %ld passed\n",i);
                 }
             }
             delete[] sub_strings;
@@ -54,6 +60,12 @@
             //packet.print();
             return true;
         }
+
+
+    void Field::print(){
+        this->pattern.print();
+    }
+
 
 
 
