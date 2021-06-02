@@ -22,4 +22,4 @@ packet=$(cat)
 				
 			result=$(echo "$result"; echo $'\n'; echo "$filterd_list")
 	done < "$1"
-echo -e "${result}"|sort -u|sed '/^$/d' | tr -d ' '
+echo -e "${result}"|sort|sed '/^$/d' | tr -d ' '

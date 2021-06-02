@@ -9,10 +9,9 @@ DST_LIB = firewall
 OTHER = input
 
 all:${DST_APP}
+$(DST_APP) : $(DST_LIB)
+	$(CXX) $(CXXFLAGS) $(APP_SRC) -o $(DST_APP) -l$(DST_LIB) -l$(OTHER)
 
 $(DST_LIB):
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(LIB_SRC) -o lib$(DST_LIB).so
-
-$(DST_APP) : $(DST_LIB)
-	$(CXX) $(CXXFLAGS) $(APP_SRC) -o $(DST_APP) -l$(DST_LIB) -l$(OTHER)
 
