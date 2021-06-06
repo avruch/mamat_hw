@@ -128,7 +128,8 @@
      * @note If "output" is set to NULL, do not allocated memory, only
      * compute "size".
      */
-    void String::split(const char *delimiters, String **output, size_t *size) const {
+    void String::split(const char *delimiters, String **output, size_t *size)\
+    const {
          if(NULL==data){
             return;
          }
@@ -157,14 +158,15 @@
             for(int j=0;j<num_of_delimiters;j++){
                 if (orig_str[i]==delimiters[j]){
                     orig_str[i]='\0';
-                    (*output)[sub_string_index]=String(&(orig_str[begin_index]));//ends with "/0" that we included
+                    (*output)[sub_string_index]=\
+                    String(&(orig_str[begin_index]));
                     sub_string_index++;
                     begin_index=i+1;
                  }
             
             }
         }
-        (*output)[sub_string_index]=String(&orig_str[begin_index]);//put last string in array
+        (*output)[sub_string_index]=String(&orig_str[begin_index]);
         return;
     }
 
@@ -177,11 +179,16 @@
         int res=0;
         split(".",&sub_strings,&size);
         if (size==SEGMENTS){
-            for(size_t sub_string_index=0;sub_string_index<size;sub_string_index++){
-               int curr_num= ((sub_strings[sub_string_index]).trim().to_integer());//returns int value of sub-segment
-               if ((curr_num>BYTE_MAX_VAL)||(curr_num<BYTE_MIN_VAL)){
-                delete[] sub_strings;
-                return 0;
+            for\
+            (size_t sub_string_index=0;sub_string_index<size;\
+                sub_string_index++){
+
+                int curr_num=\
+                 ((sub_strings[sub_string_index]).trim().to_integer());
+                 
+                if((curr_num>BYTE_MAX_VAL)||(curr_num<BYTE_MIN_VAL)){
+                    delete[] sub_strings;
+                    return 0;
                }
                res+=curr_num<<(MAX_SHIFT_VAL-(SIZE_OF_BYTE*sub_string_index));
            }
