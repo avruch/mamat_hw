@@ -12,8 +12,6 @@
     }
     
     bool Ip::set_value(String val){
-       // printf("ip set value init, string val=");
-          //  val.print();
     	String* sub_strings;
         size_t size=0;
     	val.split("/",&sub_strings,&size);
@@ -32,16 +30,13 @@
     	int mask=1<<num_bits_rule;
     	mask--;
     	low=(IP_mask)&(~mask);
-    	//printf("low value IP returned %u \n",low);
     	high=(IP_mask)|mask;
-    	//printf("high value IP returned %u \n",high);
         delete[] sub_strings;
     	return true;
     	}
 
     bool Ip::match_value(String val) const{
     	unsigned int value=val.to_integer();
-        //printf("match value init high=%d,low=%d,value=%u\n",high,low,value);
     	if ((value<low)||(value>high)){
     		return false;
     	}
