@@ -14,7 +14,10 @@
     }
     Field::~Field(){
     }
-    
+    /**
+     * @brief Match packet matches a rule.
+     * @return true if the packet matches rule else False 
+     */
     bool Field::match(String packet){
         
             if(packet.trim().equals(String(""))){
@@ -24,9 +27,10 @@
         size_t size=0;
         bool tmp;
         packet.trim().split(",",&sub_strings,&size);
+        //illegal because we have the wrong number of fields in single packet
         if (size > PACKET_SIZE){
             delete[] sub_strings;
-        	return false;//illegal because we have the wrong number of fields in single packet
+        	return false;
         }
 
        
