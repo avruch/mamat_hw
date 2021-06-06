@@ -35,13 +35,14 @@
         	size_t sub_size=0;
         	(sub_strings[i]).trim().split("=",&sub_sub_strings,&sub_size);
             if(pattern.trim().equals(sub_sub_strings[0].trim())){
-                    tmp= this->match_value(sub_sub_strings[1].trim());
-                    delete[] sub_sub_strings;    
+                    tmp= this->match_value(sub_sub_strings[1].trim());    
                     if(!tmp){
+                     	delete[] sub_sub_strings;
                         delete[] sub_strings;
                         return false;
                     }
                 }
+            delete[] sub_sub_strings; 
             }
             delete[] sub_strings;
             return true;
